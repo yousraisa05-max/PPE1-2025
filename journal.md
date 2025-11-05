@@ -18,3 +18,7 @@ Concernant les exercices eux-mêmes, j’ai pu les terminer, mais j’ai eu quel
 Dans ce sript je peux voir des commandes qui permettent de vérifier si les lignes d'un fichier ressemblent à des adresses URL. Cela est permit par le programme qui va lire les lignes du fichier et qui va vérifié si elle commence par "http://" ou "https://" et ensuite pour chaque ligne il affiche à l'aide de la commande echo s'il " ressemble à une URL valide" ou " ne ressemble pas à une URL valide ". 
 A la fin il compte combien étaient valides (ok) et combien ne l'étaient ps (nok), puis affiche le total. 
 
+# Mini projet
+## exercice 1 question 1: 
+il est préferable d'utiliser while read -r line< fichier pour lire directement le fichier. Si nous utilisons cat, des sous-processus seront créés cela peut ralentir les taches et être moins efficace et on conserve bien les variables 
+
