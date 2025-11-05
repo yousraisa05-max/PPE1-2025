@@ -22,3 +22,4 @@ A la fin il compte combien étaient valides (ok) et combien ne l'étaient ps (no
 ## exercice 1 question 1: 
 il est préferable d'utiliser while read -r line< fichier pour lire directement le fichier. Si nous utilisons cat, des sous-processus seront créés cela peut ralentir les taches et être moins efficace et on conserve bien les variables 
 
+# curl -o /dev/null -s -w 
