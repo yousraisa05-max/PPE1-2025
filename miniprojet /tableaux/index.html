@@ -3,37 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <title>Mini-projet PPE1 – Accueil</title>
-    <!-- Import du CSS Bulma -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/versions/bulma-no-dark-mode.min.css">
+    <!-- FontAwesome pour les icônes -->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-mutate-approach="sync"></script>
+    <!-- Live.js pour le rechargement automatique (optionnel) -->
+    <script type="text/javascript" src="https://livejs.com/live.js"></script>
 </head>
-
 <body>
-    <section class="section">
-        <div class="container">
 
-            <h1 class="title is-2">Mini-projet PPE1</h1>
-            <p class="subtitle is-4">
-                Bienvenue sur la page d’accueil du mini-projet.
-                Vous trouverez ici une présentation du projet ainsi qu’un lien vers le tableau généré automatiquement.
-            </p>
+    <!-- Bande principale gris avec contenu blanc -->
+    <section class="section has-background-grey">
+        <div class="container has-background-white">
 
-            <div class="content">
-                <p>
-                    Le projet consiste à :
-                </p>
-                <ul>
-                    <li>récupérer du texte sur plusieurs pages web ;</li>
-                    <li>nettoyer les données ;</li>
-                    <li>compter les mots ;</li>
-                    <li>générer un tableau HTML automatique.</li>
-                </ul>
+            <!-- Titre et logo centré -->
+            <div class="hero has-text-centered">
+                <div class="hero-body">
+                    <h1 class="title">
+                        Mini-projet PPE1 – Programmation et Projet Encadré
+                        <br><br>
+
+                        <!-- IMAGE MODIFIÉE -->
+                        <img src="images/image.jpg" alt="Logo" style="max-width:200px;">
+
+                    </h1>
+                </div>
             </div>
 
-           <a class="button is-link is-medium" href="https://yousraisa05-max.github.io/PPE1-2025/tableaux/tableaufr.html">
-     Voir le tableau des résultats
-            </a>
+            <!-- Conteneur principal avec menu latéral et contenu -->
+            <div class="columns">
+
+                <!-- Menu latéral -->
+                <aside class="menu column is-one-quarter">
+                    <p class="menu-label">Menu</p>
+                    <ul class="menu-list">
+                        <li><a class="is-active" href="3_index_bulma.html">Accueil</a></li>
+                        <li><a href="scripts.html">Scripts</a></li>
+                        <li><a href="4_tableaux.html">Tableaux</a></li>
+                    </ul>
+                </aside>
+
+                <!-- Contenu principal -->
+                <div class="column is-three-quarters">
+
+                    <!-- Contenu principal en trois colonnes pour sections -->
+                    <div class="columns">
+
+                        <!-- La vie multilingue des mots -->
+                        <div class="column is-one-third">
+                            <div class="block content">
+                                <h3 class="title is-3 has-text-white has-background-info">La vie multilingue des mots</h3>
+                                <p>Le projet vise à étudier l'usage d'un mot à travers différentes langues et de les comparer.</p>
+                            </div>
+                        </div>
+
+                        <!-- Étapes du projet -->
+                        <div class="column is-one-third">
+                            <div class="block content">
+                                <h3 class="title is-3 has-text-white has-background-info">Les étapes du projet</h3>
+                                <p>Le projet se construit selon différentes étapes :</p>
+                                <ol>
+                                    <li>choisir le mot ;</li>
+                                    <li>choisir les URL pour l'étude multilingue de ce mot ;</li>
+                                    <li>construire un corpus en récupérant le contenu textuel de ces pages ainsi que d'autres informations ;</li>
+                                    <li>construire des nuages de mots ;</li>
+                                    <li>construire des contextes autour de ces mots ;</li>
+                                    <li>envoyer ces données sur <a href="http://www.tal.univ-paris3.fr/trameur/iTrameur/">Le Trameur</a> pour étudier les cooccurrents spécifiques dans votre corpus.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <!-- Script de récupération -->
+                        <div class="column is-one-third">
+                            <div class="block content">
+                                <h3 class="title is-3 has-text-white has-background-info">Le script de récupération de pages</h3>
+                                <p>Ce script aura plusieurs objectifs, qu'on implémentera au fur et à mesure :</p>
+                                <ol class="is-lower-roman">
+                                    <li>lire une liste d'URL ;</li>
+                                    <li>pour chaque URL, vérifier si elle est valide ;</li>
+                                    <li>pour chaque URL valide, vérifier la réponse du serveur pour savoir si la page est accessible ;</li>
+                                    <li>pour chaque page accessible, récupérer son encodage ;</li>
+                                    <li>récupérer son contenu textuel et convertir au besoin en <em>UTF-8</em> ;</li>
+                                    <li>écrire dans un tableau différentes informations, dont :
+                                        <ol class="is-lower-alpha">
+                                            <li>le code HTTP de retour ;</li>
+                                            <li>l'URL elle-même ;</li>
+                                            <li>le support (nombre d'occurrences) du mot cible dans la page ;</li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+
+                    </div> <!-- Fin des trois colonnes -->
+
+                    <!-- Bande centrée avec texte -->
+                    <div class="columns">
+                        <div class="column is-half is-offset-one-quarter">
+                            <p>Ce contenu est sur une bande faisant la moitié de la largeur de l'écran, centrée.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bouton vers le tableau -->
+                    <div class="block has-text-centered mt-4">
+                        <a class="button is-link is-medium" href="miniprojet/tableaux/tableaufr.html">
+                            Voir le tableau des résultats
+                        </a>
+                    </div>
+
+                    <!-- Section tableaux français et anglais -->
+                    <div class="columns is-centered mt-5">
+                        <div class="column is-half">
+
+                            <!-- Tableau français -->
+                            <div class="block content">
+                                <h3 class="title is-3 has-background-info has-text-white">Tableaux français :</h3>
+                                <p>Sans attribut class</p>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>ligne</th>
+                                            <th>code</th>
+                                            <th>URL</th>
+                                            <th>compte</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>200</td>
+                                            <td><a href="https://fr.wikipedia.org/wiki/Robot">https://fr.wikipedia.org/wiki/Robot</a></td>
+                                            <td>205</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>200</td>
+                                            <td><a href="https://fr.wikipedia.org/wiki/Robot_de_cuisine">https://fr.wikipedia.org/wiki/Robot_de_cuisine</a></td>
+                                            <td>21</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>200</td>
+                                            <td><a href="https://fr.wikipedia.org/wiki/Bot_informatique">https://fr.wikipedia.org/wiki/Bot_informatique</a></td>
+                                            <td>9</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Tableau anglais -->
+                            <div class="block content">
+                                <h3 class="title is-3 has-background-info has-text-white">Tableaux anglais :</h3>
+                                <p>Avec class="
+                                    <span class="tag is-info">table</span>
+                                    <span class="tag is-info">is-bordered</span>
+                                    <span class="tag is-info">is-hoverable</span>
+                                    <span class="tag is-info">is-striped</span>
+                                    "</p>
+                                <table class="table is-bordered is-hoverable is-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>ligne</th>
+                                            <th>code</th>
+                                            <th>URL</th>
+                                            <th>compte</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>200</td>
+                                            <td><a href="https://en.wikipedia.org/wiki/Robot">https://en.wikipedia.org/wiki/Robot</a></td>
+                                            <td>445</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>200</td>
+                                            <td><a href="https://en.wikipedia.org/wiki/Food_processor">https://en.wikipedia.org/wiki/Food_processor</a></td>
+                                            <td>3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>200</td>
+                                            <td><a href="https://en.wikipedia.org/wiki/Internet_bot">https://en.wikipedia.org/wiki/Internet_bot</a></td>
+                                            <td>6</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>200</td>
+                                            <td><a href="https://en.wikipedia.org/wiki/Automated_bot">https://en.wikipedia.org/wiki/Automated_bot</a></td>
+                                            <td>5</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div> <!-- Fin section tableaux -->
+
+                    <!-- Section démonstration d'icônes -->
+                    <div class="block content mt-5">
+                        <h3 class="title is-3">Démonstration d'icônes</h3>
+                        <p>En voici un <span class="icon is-large"><i class="fas fa-puzzle-piece fa-lg"></i></span></p>
+                        <p>Pensez à ajouter la référence à FontAwesome dans les headers.</p>
+                        <pre>
+&lt;script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-mutate-approach="sync"&gt;&lt;/script&gt;
+                        </pre>
+                        <div class="block content">
+                            Voir aussi:
+                            <ul>
+                                <li><a href="https://bulma.io/documentation/elements/icon/">la doc de Bulma</a></li>
+                                <li><a href="https://fontawesome.com/v5/search">le moteur de recherche d'icônes</a></li>
+                            </ul>
+                            <div class="icon-text">
+                                <span class="icon has-text-warning">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                                <span>On utilise la version 5 de FontAwesome</span>
+                            </div>
+                            <div class="icon-text">
+                                <span class="icon has-text-warning">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                                <span>Limitez vos recherches aux icônes gratuites</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- Fin colonne principale -->
+
+            </div> <!-- Fin colonnes menu + contenu -->
 
         </div>
     </section>
+
 </body>
 </html>
