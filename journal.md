@@ -52,7 +52,7 @@ Par contre, en lisant le PDF du projet final, je vois que le niveau monte d'un c
 2. L'encodage : C'est la grosse différence. Avant, on détectait l'encodage et c'est tout. Là, le script doit être intelligent :
     * Si c'est UTF-8 : super, on continue.
     * Si ce n'est PAS UTF-8 : je ne peux plus ignorer le problème. Je dois utiliser iconv pour convertir la page. C'est crucial pour que egrep fonctionne après. C'est la partie conditionnelle (if/else) qui va être la plus délicate à coder.   
-3. Le résultat : Une vraie page Web Je ne dois plus sortir un tableau texte moche, mais une vraie page HTML. Ça veut dire que mon script doit "écrire du HTML" (des balises <tr>, <td>, <a href=...>). Ça va être fastidieux à écrire, mais le résultat sera visuel.  
+3. Le résultat : Une vraie page Web Je ne dois plus sortir un tableau texte moche, mais une vraie page HTML. Ça veut dire que mon script doit "écrire du HTML" (des balises <tr>, <td>, <a href=...>).  
 4. L'analyse du contenu Le mini-projet s'arrêtait à "récupérer la page". Là, je dois creuser dedans :
     * Utiliser lynx -dump pour virer le HTML et garder le texte pur.  
     * Utiliser egrep pour attraper le contexte autour de mon mot-clé.  
