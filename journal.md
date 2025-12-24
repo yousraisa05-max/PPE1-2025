@@ -36,3 +36,54 @@ Cela m’a permis de bien comprendre l’importance des chemins exacts, de la se
 ### update 
 J’ai enfin trouvé la solution du problème par rapport à l’image : pour le résoudre, j’ai identifié que le chemin entre l’index.html et le dossier images était incorrect, car le fichier index était lui-même dans le sous-dossier tableaux, alors que le dossier images se trouvait à côté. Ce que j’ai fait : j’ai tout simplement déplacé index.html directement dans le dossier miniprojet, ce qui a permis à l’image d’être correctement trouvée et affichée. J’ai ensuite mis à jour mon dépôt Git avec git add, git commit et git push. Après ces étapes, l’image s’affiche correctement sur le site, et le problème est désormais résolu.
 Après avoir résolu le problème de l’image, j’ai rencontré un nouveau problème : le site s’affiche parfaitement lorsque je l’ouvre directement sur mon Mac, mais je me suis rendu compte en cours qu’il ne s’affichait pas correctement lorsqu’il était publié sur GitHub Pages. Il s’agit donc d’un autre problème avec la façon dont les fichiers sont mis en ligne ou avec les chemins des fichiers.  
+## découverte du projet final: 
+# je fais le point sur ce que je sais faire et ce qui m’attend 
+Ce que je maîtrise déjà (Merci le Mini-Projet !)
+Le mini-projet m'a permis de valider les briques de base. Je n'ai plus peur de :
+
+
+*  La boucle principale : Lire un fichier d'URLs ligne par ligne, ça, c'est acquis.  
+*  Les arguments : Passer un fichier à mon script ($1) et vérifier qu'il est bien là, c'est bon.  
+*  Récupérer l'info : J'ai déjà le code pour choper le code HTTP et l'encodage.  
+En gros, toute la structure "squelette" de mon script est déjà écrite. Je ne pars pas de zéro page blanche, et ça, ça rassure énormément.
+Ce qui change (et où je dois faire attention)
+Par contre, en lisant le PDF du projet final, je vois que le niveau monte d'un cran. Ce n'est plus juste de l'affichage, c'est de la production.
+1. Fini le terminal, bonjour les fichiers Dans le mini-projet, on faisait des echo dans le terminal. Là, c'est du sérieux : je dois stocker physiquement les pages. Je vais devoir gérer des redirections > vers des dossiers précis (aspirations, dumps-text). Si je me rate dans les chemins de dossiers, rien ne marchera.   
+2. L'encodage : C'est la grosse différence. Avant, on détectait l'encodage et c'est tout. Là, le script doit être intelligent :
+    * Si c'est UTF-8 : super, on continue.
+    * Si ce n'est PAS UTF-8 : je ne peux plus ignorer le problème. Je dois utiliser iconv pour convertir la page. C'est crucial pour que egrep fonctionne après. C'est la partie conditionnelle (if/else) qui va être la plus délicate à coder.   
+3. Le résultat : Une vraie page Web Je ne dois plus sortir un tableau texte moche, mais une vraie page HTML. Ça veut dire que mon script doit "écrire du HTML" (des balises <tr>, <td>, <a href=...>). Ça va être fastidieux à écrire, mais le résultat sera visuel.  
+4. L'analyse du contenu Le mini-projet s'arrêtait à "récupérer la page". Là, je dois creuser dedans :
+    * Utiliser lynx -dump pour virer le HTML et garder le texte pur.  
+    * Utiliser egrep pour attraper le contexte autour de mon mot-clé.  
+# mettre au clair la structure du script 
+La structure de mon script devra ressembler à ça :
+1.  Lecture des URLs : Je pars d'un fichier texte contenant mes 50 URLs.  
+2.  La Boucle : Je dois faire une boucle for pour traiter chaque URL une par une.  
+3. Vérification de l'encodage : C'est le point critique. Si la page n'est pas en UTF-8, je dois essayer de détecter l'encodage et le convertir (avec iconv). Sinon, j'aurai des problèmes d'affichage des caractères.   
+4.  Extraction du contexte : Une fois que j'ai le texte propre (grâce à lynx), je dois utiliser egrep pour trouver mon mot-clé et afficher les lignes autour (le contexte).  
+Le rendu final : Je ne dois pas oublier que tout cela doit atterrir dans un Tableau HTML bien structuré. Pour chaque URL, je dois générer une ligne de tableau avec :
+
+
+* Le lien vers la page originale.
+* Le code HTTP.
+* L'encodage détecté.
+* Le lien vers mon fichier "dump" (texte brut).
+* Le contexte (la concordance) 
+* 
+# je revois le cours d’html et http  
+Le cours rappelle que le HTML n'est finalement que du texte balisé. C'est important pour moi car mon but ultime dans ce projet est de nettoyer tout ce balisage (le head, les styles, etc.) pour ne garder que le vrai texte.
+
+
+
+Mais avant d'avoir la page, il y a le protocole HTTP. J'ai retenu le schéma requête/réponse. C'est super important pour mon script : quand je demande une URL, je dois vérifier le Code HTTP de la réponse.
+
+
+
+
+* Si c'est 200, c'est gagné, je peux traiter la page.  
+* Si c'est 4xx ou 5xx (erreur client ou serveur), mon script doit être assez intelligent pour ignorer cette URL et passer à la suivante sans planter.  
+2. Ma boîte à outils : cURL, Wget et Lynx
+C'est là que je vois mes progrès. Au début, je ne comprenais pas la différence entre ces commandes. Maintenant, c'est plus clair pour le projet :
+*  Pour récupérer la page (l'aspiration) : Je vais utiliser cURL ou wget. cURL est pratique pour voir les entêtes (avec l'option -i) et vérifier l'encodage avant même de télécharger.    
+* Pour nettoyer le texte : C'est là que Lynx intervient. C'est un navigateur textuel, mais je vais surtout l'utiliser en ligne de commande avec l'option -dump. Ça me permet de récupérer le contenu textuel brut sans navigation, ce qui est exactement ce qu'on attend dans la colonne "dump" du tableau final.  
